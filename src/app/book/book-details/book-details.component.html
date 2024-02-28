@@ -1,0 +1,41 @@
+
+
+<!--
+<div class="book-detail">
+  <h2>{{ book?.title | async }}</h2>
+
+  <div *ngIf="book; else loading">
+    <img [src]="book.imageUrl" [alt]="book.title">
+    <p class="author">{{ book.author }}</p>
+    <span class="price">
+      {{ book.price | currency:'USD' }}
+    </span>
+    <app-book-rating [rating]="book.rating"></app-book-rating>
+
+    <p>{{ book.description }}</p>
+
+    <button *ngIf="!isInCart" (click)="addToCart(book)">Add to Cart</button>
+    <button *ngIf="isInCart">In Cart</button>
+
+    <div class="reviews">
+      <h3>Reviews</h3>
+      <ul *ngIf="book.reviews.length > 0">
+        <li *ngFor="let review of book.reviews">
+          <p class="review-author">{{ review.author }}</p>
+          <p class="review-text">{{ review.text }}</p>
+          <app-book-rating [rating]="review.rating"></app-book-rating>
+        </li>
+      </ul>
+      <p *ngIf="book.reviews.length === 0">No reviews yet.</p>
+    </div>
+  </div>
+
+  <ng-template #loading>
+    <p>Loading book details...</p>
+  </ng-template>
+
+  <div *ngIf="error">
+    <p class="error-message">Error: {{ error }}</p>
+  </div>
+</div>
+-->

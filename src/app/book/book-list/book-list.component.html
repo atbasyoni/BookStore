@@ -1,0 +1,41 @@
+
+
+<!--
+  <div class="book-list">
+  <h2>Books</h2>
+
+  <div *ngIf="isLoading">
+    <p>Loading books...</p>
+  </div>
+
+  <div *ngIf="error">
+    <p class="error-message">Error: {{ error }}</p>
+  </div>
+
+  <div *ngIf="books.length > 0">
+    <ul class="book-list-items">
+      <li *ngFor="let book of books" [routerLink]="['/books', book.id]">
+        <div class="book-item">
+          <img [src]="book.imageUrl" [alt]="book.title">
+          <h3>{{ book.title }}</h3>
+          <p class="author">{{ book.author }}</p>
+          <span class="price">
+            {{ book.price | currency:'USD' }}
+          </span>
+          <app-book-rating [rating]="book.rating"></app-book-rating>
+        </div>
+      </li>
+    </ul>
+
+    <div class="pagination">
+      <a [routerLink]="['/books']" [queryParams]="{ page: currentPage - 1 }" *ngIf="currentPage > 1">Previous</a>
+      <span>{{ currentPage }} / {{ totalPages }}</span>
+      <a [routerLink]="['/books']" [queryParams]="{ page: currentPage + 1 }" *ngIf="currentPage < totalPages">Next</a>
+    </div>
+  </div>
+
+  <div *ngIf="books.length === 0 && !isLoading">
+    <p>No books found.</p>
+  </div>
+</div>
+-->
