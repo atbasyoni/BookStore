@@ -2,11 +2,14 @@ import { Component, OnInit } from '@angular/core';
 import { Book } from '../../models/book.model';
 import { BookService } from '../../services/book.service';
 import { ActivatedRoute, Router } from '@angular/router';
+import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-book-list',
   standalone: true,
-  imports: [],
+  imports: [
+    CommonModule
+  ],
   templateUrl: './book-list.component.html',
   styleUrl: './book-list.component.scss'
 })
@@ -33,19 +36,19 @@ export class BookListComponent implements OnInit {
   loadBooks() {
     this.isLoading = true;
     this.bookService.getBooks(this.currentPage)
-      .subscribe(
-        (response) => {
+      .subscribe({
+        next: (response) => {
           this.books = response.data;
           this.totalPages = response.totalPages;
           this.isLoading = false;
           this.error = null;
         },
-        (error) => {
+        error: (error) => {
           this.isLoading = false;
           this.error = error.message;
           console.error('Error loading books:', error);
         }
-      );
+      });
   }
 
   onPageChange(pageNumber: number) {

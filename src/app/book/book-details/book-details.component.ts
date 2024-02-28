@@ -3,16 +3,19 @@ import { Observable, switchMap, throwError } from 'rxjs';
 import { Book } from '../../models/book.model';
 import { BookService } from '../../services/book.service';
 import { ActivatedRoute } from '@angular/router';
+import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-book-details',
   standalone: true,
-  imports: [],
+  imports: [
+    CommonModule
+  ],
   templateUrl: './book-details.component.html',
   styleUrl: './book-details.component.scss'
 })
 export class BookDetailComponent implements OnInit {
-  book$: Observable<Book | null>;
+  book$!: Observable<Book | null>;
   error: string | null = null;
 
   constructor(

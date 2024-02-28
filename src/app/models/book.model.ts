@@ -1,3 +1,6 @@
+import { Author } from "./author.model";
+import { Genre } from "./genre.model";
+
 export interface Book
 {
   id: string;
@@ -9,9 +12,7 @@ export interface Book
   image?: string;
   price: number;
   publicationDate?: number;
-  authorId: number;
-  genreId: number;
-  genre?: string;
-  author?: string;
+  genre?: Genre;
+  author?: Author;
   //rating?: string;
 }

@@ -1,0 +1,32 @@
+
+<!--
+<div class="book-filter">
+  <h2>Filter Books</h2>
+
+  <div class="filter-section">
+    <h4>Category</h4>
+    <select [(ngModel)]="selectedCategory" (ngModelChange)="onCategoryChange($event)">
+      <option *ngFor="let category of categories" [value]="category">{{ category }}</option>
+    </select>
+  </div>
+
+  <div class="filter-section">
+    <h4>Genres</h4>
+    <ul class="genre-checkboxes">
+      <li *ngFor="let genre of genres">
+        <input type="checkbox" [(ngModel)]="selectedGenres.includes(genre)" (change)="onGenreChange(genre, $event.target.checked)">
+        <label for="genre-{{genre}}">{{ genre }}</label>
+      </li>
+    </ul>
+  </div>
+
+  <div class="filter-section">
+    <h4>Price Range</h4>
+    <span>Min: $<input type="number" [(ngModel)]="minPrice" min="0"></span>
+    <span>Max: $<input type="number" [(ngModel)]="maxPrice" min="0"></span>
+  </div>
+
+  <button (click)="emitFilteredBooks()">Filter Books</button>
+</div>
+
+-->

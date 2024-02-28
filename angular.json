@@ -30,9 +30,18 @@
               "src/assets"
             ],
             "styles": [
-              "src/styles.scss"
+              "src/assets/css/bootstrap.min.css",
+              "src/assets/css/glightbox.min.css",
+              "src/assets/css/LineIcons.3.0.css",
+              "src/assets/css/main.css",
+              "src/assets/css/tiny-slider.css"
             ],
-            "scripts": []
+            "scripts": [
+              "src/assets/js/bootstrap.min.js",
+              "src/assets/js/tiny-slider.js",
+              "src/assets/js/glightbox.min.js",
+              "src/assets/js/main.js"
+            ]
           },
           "configurations": {
             "production": {
