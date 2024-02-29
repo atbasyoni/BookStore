@@ -5,7 +5,7 @@ import { Injectable } from '@angular/core';
 })
 export class AuthService {
 
-  private storageKey = 'bookstore_auth'; // Replace with your desired storage key
+  private storageKey = 'user_token'; // Replace with your desired storage key
 
   constructor() { }
 

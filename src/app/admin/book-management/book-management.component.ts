@@ -1,11 +1,18 @@
 import { Component, OnInit } from '@angular/core';
 import { Book } from '../../models/book.model';
 import { BookService } from '../../services/book.service';
+import { CommonModule } from '@angular/common';
+import { ReactiveFormsModule } from '@angular/forms';
+import { RouterModule } from '@angular/router';
 
 @Component({
   selector: 'app-book-management',
   standalone: true,
-  imports: [],
+  imports: [
+    CommonModule,
+    ReactiveFormsModule,
+    RouterModule
+  ],
   templateUrl: './book-management.component.html',
   styleUrl: './book-management.component.scss'
 })
@@ -17,7 +24,7 @@ export class BookManagementComponent implements OnInit {
   constructor(private bookService: BookService) {}
 
   ngOnInit() {
-    this.bookService.getBooks()
+    this.bookService.getAllBooks()
       .subscribe({
         next: (books) => {
           this.books = books;

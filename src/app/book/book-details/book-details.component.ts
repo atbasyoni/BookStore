@@ -15,27 +15,43 @@ import { CommonModule } from '@angular/common';
   styleUrl: './book-details.component.scss'
 })
 export class BookDetailComponent implements OnInit {
-  book$!: Observable<Book | null>;
-  error: string | null = null;
+  book: Book | null = null;
+  reviews: any[] = [];
+  isLoggedIn: boolean = false;
 
   constructor(
     private bookService: BookService,
-    private route: ActivatedRoute
+    private route: ActivatedRoute,
   ) {}
 
   ngOnInit() {
-    this.book$ = this.route.paramMap.pipe(
-      switchMap(params => {
-        const bookId = Number(params.get('id'));
-        if (!bookId) {
-          return throwError('Invalid book ID');
-        }
-        return this.bookService.getBook(bookId);
-      })
-    );
+    this.route.params.subscribe(params => {
+      const bookId = params['id'];
+      this.loadBook(bookId);
+      //this.loadReviews(bookId);
+    });
   }
 
-  addToCart(book: Book) {
-    // Implement logic to add book to cart (e.g., call a service or store in local storage)
+  loadBook(bookId: number) {
+    this.bookService.getBook(bookId)
+      .subscribe(book => {
+        this.book = book;
+      });
+  }
+  /*
+  loadReviews(bookId: string) {
+    this.bookService.getReviews(bookId)
+      .subscribe(reviews => {
+        this.reviews = reviews;
+      });
+  }
+  */
+
+  addToCart() {
+    if (this.book) {
+      // Implement your cart logic here
+      // e.g., call a service to add the book to the cart
+      console.log(`Adding book ${this.book.title} to cart`);
+    }
   }
 }

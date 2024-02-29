@@ -5,49 +5,49 @@
           <div class="col-lg-6 offset-lg-3 col-md-10 offset-md-1 col-12">
               <div class="register-form">
                   <div class="title">
-                      <h3>ليس لديك حساب؟ سجل</h3>
+                      <h3>اضافة كتاب</h3>
                   </div>
-                  <form class="row" [formGroup]="registerForm" method="post">
+                  <form class="row" [formGroup]="addBookForm" method="post">
                       <div class="col-sm-12">
                         <div class="form-group" >
-                            <label for="reg-un">اسم المستخدم</label>
-                            <input class="form-control" formControlName="username" type="text" id="reg-un" required>
+                            <label for="reg-title">اسم الكتاب</label>
+                            <input class="form-control" formControlName="title" type="text" id="reg-title" required>
                         </div>
                       </div>
                       <div class="col-sm-12">
                           <div class="form-group">
-                              <label for="reg-fn">الاسم الأول</label>
-                              <input class="form-control" formControlName="firstname" type="text" id="reg-fn" required>
+                              <label for="reg-isbn">الترقيم الدولي</label>
+                              <input class="form-control" formControlName="isbn" type="text" id="reg-isbn" required>
                           </div>
                       </div>
                       <div class="col-sm-12">
                           <div class="form-group">
-                              <label for="reg-ln">الأسم الأخير</label>
-                              <input class="form-control" formControlName="lastname" type="text" id="reg-ln" required>
+                              <label for="reg-des">الوصف</label>
+                              <input class="form-control" formControlName="description" type="text" id="reg-des" required>
                           </div>
                       </div>
                       <div class="col-sm-12">
                           <div class="form-group">
-                              <label for="reg-email">البريد الألكتروني</label>
-                              <input class="form-control" formControlName="email" type="email" id="reg-email" required>
+                              <label for="reg-pages">عدد الصفحات</label>
+                              <input class="form-control" formControlName="pages" type="email" id="reg-pages" required>
                           </div>
                       </div>
                       <div class="col-sm-12">
                           <div class="form-group">
-                              <label for="reg-phone">رقم الموبايل</label>
-                              <input class="form-control" formControlName="phoneNumber" type="text" id="reg-phone" required>
+                              <label for="reg-lang">اللغة</label>
+                              <input class="form-control" formControlName="language" type="text" id="reg-lang" required>
                           </div>
                       </div>
                       <div class="col-sm-12">
                         <div class="form-group">
-                            <label for="reg-phone">تاريخ الميلاد</label>
-                            <input class="form-control" formControlName="dateOfbirth" type="text" id="reg-phone" required>
+                            <label for="reg-price">السعر</label>
+                            <input class="form-control" formControlName="price" type="text" id="reg-price" required>
                         </div>
                       </div>
                       <div class="col-sm-6">
                           <div class="form-group">
-                              <label for="reg-pass">الرقم السري</label>
-                              <input class="form-control" formControlName="password" type="password" id="reg-pass" required>
+                              <label for="reg-pdate">تاريخ النشر</label>
+                              <input class="form-control" formControlName="publicationDate" type="text" id="reg-pdate" required>
                           </div>
                       </div>
                       <div class="col-sm-6">

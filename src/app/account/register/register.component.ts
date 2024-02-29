@@ -1,13 +1,16 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { Router } from '@angular/router';
+import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
+import { Router, RouterModule } from '@angular/router';
 import { AuthService } from '../../services/auth.service';
 import { AccountService } from '../../services/account.service';
 
 @Component({
   selector: 'app-register',
   standalone: true,
-  imports: [],
+  imports: [
+    ReactiveFormsModule,
+    RouterModule
+  ],
   templateUrl: './register.component.html',
   styleUrl: './register.component.scss'
 })
@@ -25,10 +28,18 @@ export class RegisterComponent implements OnInit {
 
   ngOnInit() {
     this.registerForm = this.fb.group({
-      email: ['', [Validators.required, Validators.email]],
-      password: ['', [Validators.required, Validators.minLength(8)]],
-      confirmPassword: ['', [Validators.required, Validators.minLength(8)]]
-    }, { validator: this.passwordMatchValidator }); // Add password match validator
+      controls: {
+        username: ['', [Validators.required]],
+        firstname: ['', [Validators.required]],
+        lastname: ['', [Validators.required]],
+        email: ['', [Validators.required, Validators.email]],
+        phoneNumber: ['', [Validators.required]],
+        dateOfBirth: ['', [Validators.required]],
+        password: ['', [Validators.required, Validators.minLength(8)]],
+        confirmPassword: ['', [Validators.required, Validators.minLength(8)]]
+      },
+      options: { validator: this.passwordMatchValidator }
+    });
   }
 
   onSubmit() {

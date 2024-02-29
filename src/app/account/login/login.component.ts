@@ -1,13 +1,16 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { Router } from '@angular/router';
+import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
+import { Router, RouterModule } from '@angular/router';
 import { AuthService } from '../../services/auth.service';
 import { AccountService } from '../../services/account.service';
 
 @Component({
   selector: 'app-login',
   standalone: true,
-  imports: [],
+  imports: [
+    ReactiveFormsModule,
+    RouterModule
+  ],
   templateUrl: './login.component.html',
   styleUrl: './login.component.scss'
 })
@@ -25,7 +28,7 @@ export class LoginComponent implements OnInit {
 
   ngOnInit() {
     this.loginForm = this.fb.group({
-      email: ['', [Validators.required, Validators.email]],
+      username: ['', [Validators.required]],
       password: ['', [Validators.required, Validators.minLength(8)]]
     });
   }
@@ -37,15 +40,15 @@ export class LoginComponent implements OnInit {
 
     this.isLoading = true;
     this.accountService.login(this.loginForm.value)
-      .subscribe(
-        () => {
+      .subscribe({
+        complete: () => {
           this.isLoading = false;
           this.router.navigate(['/']); // Redirect to home upon successful login
         },
-        (error) => {
+        error: (error) => {
           this.isLoading = false;
           this.errorMessage = error.message; // Display error message
         }
-      );
+      });
   }
 }

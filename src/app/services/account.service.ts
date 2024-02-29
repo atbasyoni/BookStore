@@ -9,13 +9,13 @@ import { User } from '../models/user.model';
 })
 export class AccountService {
 
-  private baseUrl = 'YOUR_API_BASE_URL'; // Replace with your actual API URL
+  private baseUrl = 'https://localhost:44398/api/account'; // Replace with your actual API URL
 
   constructor(private http: HttpClient, private authService: AuthService) {}
 
   /* Authentication Functions */
 
-  login(credentials: { email: string, password: string }): Observable<any> {
+  login(credentials: { username: string, password: string }): Observable<any> {
     return this.http.post(`${this.baseUrl}/login`, credentials)
       .pipe(
         map(response => {

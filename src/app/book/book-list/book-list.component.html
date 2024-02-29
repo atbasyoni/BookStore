@@ -18,8 +18,8 @@
                   <div class="single-widget">
                       <h3>التصنيفات</h3>
                       <ul class="list">
-                          <li>
-                              <a routerLink="">Computers & Accessories </a><span>(1)</span>
+                          <li *ngFor="let genre of genres">
+                              <a routerLink="">{{ genre.name }}</a><span>(1)</span>
                           </li>
                       </ul>
                   </div>
@@ -34,11 +34,11 @@
                           <div class="col-lg-7 col-md-8 col-12">
                               <div class="product-sorting">
                                   <label for="sorting">رتب حسب:</label>
-                                  <select class="form-control" id="sorting">
-                                      <option>أقل سعرًا لأعلي</option>
-                                      <option>أعلى سعرًا لأقل</option>
-                                      <option>أ - ي</option>
-                                      <option>ي - أ</option>
+                                  <select class="form-control" id="sorting" (change)="onSortChange($any($event.target).value)">
+                                      <option value="priceASE">أقل سعرًا لأعلي</option>
+                                      <option value="priceDES">أعلى سعرًا لأقل</option>
+                                      <option value="titleASE">أ - ي</option>
+                                      <option value="titleDES">ي - أ</option>
                                   </select>
                                   <h3 class="total-show-product">عرض: <span>1 - 12 كتاب</span></h3>
                               </div>
@@ -77,22 +77,23 @@
                                       <div class="product-image">
                                           <img [src]="book.image" alt="{{ book.title }}">
                                           <div class="button">
-                                              <a href="product-details.html" class="btn"><i
+                                              <a (click)="addToCart(book)" class="btn"><i
                                                       class="lni lni-cart"></i> اضف إلى السلة</a>
                                           </div>
                                       </div>
                                       <div class="product-info">
                                           <span class="category">{{ book.genre?.name }}</span>
-                                          <h4 class="title">
-                                              <a href="product-grids.html">{{ book.author?.name }}</a>
+                                          <h4 class="title mt-2">
+                                              <a [routerLink]="['/book', book.id]">{{ book.title }}</a>
                                           </h4>
-                                          <ul class="review">
+                                          <span class="mt-2">{{ book.author?.name }}</span>
+                                          <ul class="review mt-2">
                                               <li><i class="lni lni-star-filled"></i></li>
                                               <li><i class="lni lni-star-filled"></i></li>
                                               <li><i class="lni lni-star-filled"></i></li>
                                               <li><i class="lni lni-star-filled"></i></li>
                                               <li><i class="lni lni-star"></i></li>
-                                              <li><span>4.0 Review(s)</span></li>
+                                              <li></li>
                                           </ul>
                                           <div class="price">
                                               <span>{{ book.price | currency:'EGP' }}</span>
@@ -104,6 +105,13 @@
                           </div>
                           <div class="row">
                               <div class="col-12">
+                                <!--app-pagination
+                                  *ngIf="totalPages > 1"
+                                  [currentPage]="currentPage"
+                                  [totalPages]="totalPages"
+                                  (onPageChange)="onPageChange($event)"
+                                ></app-pagination-->
+
                                   <!-- Pagination -->
                                   <div class="pagination left">
                                       <ul class="pagination-list">
@@ -129,24 +137,25 @@
                                               <div class="product-image">
                                                   <img [src]="book.image" alt="{{ book.title }}">
                                                   <div class="button">
-                                                      <a href="product-details.html" class="btn"><i
+                                                      <a (click)="addToCart(book)" class="btn"><i
                                                               class="lni lni-cart"></i> اضف إلى السلة</a>
                                                   </div>
                                               </div>
                                           </div>
                                           <div class="col-lg-8 col-md-8 col-12">
                                               <div class="product-info">
-                                                  <span class="category">{{ book.genre?.name }}</span>
-                                                  <h4 class="title">
-                                                      <a href="product-grids.html">{{ book.title }}</a>
-                                                  </h4>
-                                                  <ul class="review">
+                                                  <span class="category mt-2">{{ book.genre?.name }}</span>
+                                                  <h2 class="title mt-2">
+                                                      <a [routerLink]="['/book', book.id]">{{ book.title }}</a>
+                                                  </h2>
+                                                  <span class="mt-2">{{ book.author?.name }}</span>
+                                                  <ul class="review mt-2">
                                                       <li><i class="lni lni-star-filled"></i></li>
                                                       <li><i class="lni lni-star-filled"></i></li>
                                                       <li><i class="lni lni-star-filled"></i></li>
                                                       <li><i class="lni lni-star-filled"></i></li>
                                                       <li><i class="lni lni-star"></i></li>
-                                                      <li><span>4.0 Review(s)</span></li>
+                                                      <li></li>
                                                   </ul>
                                                   <div class="price">
                                                       <span>{{ book.price | currency:'EGP' }}</span>
@@ -160,6 +169,13 @@
                           </div>
                           <div class="row">
                               <div class="col-12">
+                                  <!--app-pagination
+                                    *ngIf="totalPages > 1"
+                                    [currentPage]="currentPage"
+                                    [totalPages]="totalPages"
+                                    (onPageChange)="onPageChange($event)"
+                                  ></app-pagination-->
+
                                   <!-- Pagination -->
                                   <div class="pagination left">
                                       <ul class="pagination-list">

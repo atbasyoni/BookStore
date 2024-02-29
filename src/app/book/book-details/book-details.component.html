@@ -1,3 +1,80 @@
+<!-- Start Item Details -->
+<section class="item-details section">
+  <div class="container">
+      <div class="top-area">
+          <div class="row align-items-center">
+              <div class="col-lg-6 col-md-12 col-12">
+                  <div class="product-images">
+                      <main id="gallery">
+                        <div class="main-img">
+                            <img [src]="book?.image" id="current" alt="{{ book?.title }}">
+                        </div>
+                      </main>
+                  </div>
+              </div>
+              <div class="col-lg-6 col-md-12 col-12">
+                  <div class="product-info">
+                      <h2 class="title">{{ book?.title }}</h2>
+                      <p class="category"><i class="lni lni-tag"></i><a href="javascript:void(0)">{{ book?.genre?.name }}</a></p>
+                      <h3 class="price">{{ book?.price | currency:'EGP' }}</h3>
+                      <p class="info-text">{{ book?.description }}</p>
+                      <div class="bottom-content">
+                          <div class="row align-items-end">
+                              <div class="col-lg-4 col-md-4 col-12">
+                                  <div class="button cart-button">
+                                      <button class="btn" style="width: 100%;" (click)="addToCart()">Add to Cart</button>
+                                  </div>
+                              </div>
+                              <div class="col-lg-4 col-md-4 col-12">
+                                <div class="form-group quantity">
+                                    <label for="color">Quantity</label>
+                                    <select class="form-control">
+                                        <option>1</option>
+                                        <option>2</option>
+                                        <option>3</option>
+                                        <option>4</option>
+                                        <option>5</option>
+                                    </select>
+                                </div>
+                            </div>
+                              <div class="col-lg-4 col-md-4 col-12">
+                                  <div class="wish-button">
+                                      <button class="btn"><i class="lni lni-heart"></i> To Wishlist</button>
+                                  </div>
+                              </div>
+                          </div>
+                      </div>
+                  </div>
+              </div>
+          </div>
+      </div>
+      <div class="product-details-info">
+          <div class="single-block">
+              <div class="row">
+                  <div class="col-lg-6 col-12">
+                      <div class="info-body custom-responsive-margin">
+                          <h4>وصف الكتاب</h4>
+                          <p>{{ book?.description }}</p>
+                      </div>
+                  </div>
+                  <div class="col-lg-6 col-12">
+                      <div class="info-body">
+                          <h4>التفاصيل</h4>
+                          <ul class="normal-list">
+                              <li><span>الترقيم الدولي: </span> {{ book?.isbn }}</li>
+                              <li><span>عدد الصفحات: </span> {{ book?.pages }}</li>
+                              <li><span>المؤلف: </span> {{ book?.author?.name }}</li>
+                              <li><span>اللغة: </span> {{ book?.language }}</li>
+                              <li><span>تاريخ النشر: </span> {{ book?.publicationDate }}</li>
+                          </ul>
+                      </div>
+                  </div>
+              </div>
+          </div>
+      </div>
+  </div>
+</section>
+<!-- End Item Details -->
 
 
 <!--
@@ -38,4 +115,32 @@
     <p class="error-message">Error: {{ error }}</p>
   </div>
 </div>
+
+<div class="book-details-container">
+  <img [src]="book.imageUrl" alt="{{ book.title }}">
+  <h1>{{ book.title }}</h1>
+  <p>by {{ book.author }}</p>
+  <div class="details">
+    <p><strong>Description:</strong> {{ book.description }}</p>
+    <p><strong>Published:</strong> {{ book.publishedYear }}</p>
+    <p><strong>ISBN:</strong> {{ book.isbn }}</p>
+    <p><strong>Pages:</strong> {{ book.pages }}</p>
+    <app-rating [rating]="book.rating" [readOnly]="true"></app-rating>
+  </div>
+  <div class="price-cart">
+    <span class="price">{{ book.price | currency:'USD' }}</span>
+    <button *ngIf="isLoggedIn" (click)="addToCart()">Add to Cart</button>
+  </div>
+  <div class="reviews">
+    <h2>Reviews</h2>
+    <ul *ngIf="reviews.length > 0">
+      <li *ngFor="let review of reviews">
+        <p><strong>{{ review.user }}:</strong> {{ review.text }}</p>
+        <app-rating [rating]="review.rating"></app-rating>
+      </li>
+    </ul>
+    <p *ngIf="reviews.length === 0">No reviews yet.</p>
+  </div>
+</div>
+
 -->

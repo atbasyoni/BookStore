@@ -1,1 +1,67 @@
-<p>book-management works!</p>
+<!-- Shopping Cart -->
+<div class="shopping-cart section">
+  <div class="container">
+      <h2 class="mb-4">الكتب</h2>
+      <div class="cart-list-head">
+          <!-- Cart List Title -->
+          <div class="cart-list-title">
+              <div class="row  text-center">
+                  <div class="col-lg-1 col-md-1 col-12">
+
+                  </div>
+                  <div class="col-lg-2 col-md-2 col-12">
+                    <p>اسم الكتاب</p>
+                  </div>
+                  <div class="col-lg-2 col-md-2 col-12">
+                    <p>المؤلف</p>
+                  </div>
+                  <div class="col-lg-2 col-md-2 col-12">
+                    <p>الترقيم الدولي</p>
+                  </div>
+                  <div class="col-lg-1 col-md-1 col-12">
+                    <p>السعر</p>
+                  </div>
+                  <div class="col-lg-2 col-md-2 col-12">
+                    <p>تعديل</p>
+                  </div>
+                  <div class="col-lg-2 col-md-2 col-12">
+                    <p>حذف</p>
+                  </div>
+              </div>
+          </div>
+          <!-- End Cart List Title -->
+          <!-- Cart Single List list -->
+          <div class="cart-single-list">
+              <div class="row align-items-center text-center" *ngFor="let book of books">
+                  <div class="col-lg-1 col-md-1 col-12">
+                      <img class="rounded-circle" [src]="book.image" alt="{{ book.title }}">
+                  </div>
+                  <div class="col-lg-2 col-md-2 col-12">
+                      <h5 class="product-name"><a [routerLink]="['/book', book.id]">
+                              {{ book.title }}</a></h5>
+                      <p class="product-des">
+                          <span><em>التصنيف:</em> {{ book.genre?.name }}</span>
+                      </p>
+                  </div>
+                  <div class="col-lg-2 col-md-2 col-12">
+                  <p>{{ book.author?.name }}</p>
+                  </div>
+                  <div class="col-lg-2 col-md-2 col-12">
+                    <p>{{ book.isbn }}</p>
+                  </div>
+                  <div class="col-lg-1 col-md-1 col-12">
+                    <p>{{ book.price }}</p>
+                  </div>
+                  <div class="col-lg-2 col-md-2 col-12">
+                    <a class="btn-edit">تعديل</a>
+                  </div>
+                  <div class="col-lg-2 col-md-2 col-12">
+                    <a class="btn-delete">حذف</a>
+                  </div>
+              </div>
+          </div>
+          <!-- End Single List list -->
+      </div>
+  </div>
+</div>
+<!--/ End Shopping Cart -->

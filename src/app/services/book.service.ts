@@ -8,28 +8,27 @@ import { FilterOptions } from '../models/filter-options-model';
   providedIn: 'root'
 })
 export class BookService {
-  private apiUrl = 'your-api-endpoint'; // Replace with your actual API endpoint
+  private apiUrl = 'https://localhost:44398/api/book'; // Replace with your actual API endpoint
 
   constructor(private http: HttpClient) {}
   
-  getBooks(page: number = 1, filters?: FilterOptions): Observable<any> {
-    // Build the API query string based on page and filters
+  getBooksWithFilters(genre?: string, sort?: string, page: number = 1): Observable<any> {
     let queryString = `?page=${page}`;
-    if (filters) {
-      // Add filter parameters based on your API requirements
-      if (filters.category) {
-        queryString += `&category=${filters.category}`;
-      }
-      // Add other filter parameters as needed
+    
+    if (genre) {
+      queryString += `&genre=${genre}`;
+    }
+
+    if(sort) {
+      queryString += `&sort=${sort}`;
     }
     
-    // Make the HTTP request
-    return this.http.get<any>(`${this.apiUrl}/books${queryString}`);
+    return this.http.get<any>(`${this.apiUrl}${queryString}`);
   }
 
   getBook(id: number): Observable<Book | null> {
     // Make the HTTP request
-    return this.http.get<Book>(`${this.apiUrl}/books/${id}`)
+    return this.http.get<Book>(`${this.apiUrl}/${id}`)
       .pipe(
         catchError(() => of(null)) // Handle errors gracefully
       );
@@ -42,13 +41,14 @@ export class BookService {
         catchError(this.handleError)
       );
   }
-
+  /*
   getBookById(bookId: number): Observable<Book> {
     return this.http.get<Book>(`${this.apiUrl}/${bookId}`)
       .pipe(
         catchError(this.handleError)
       );
   }
+  */
 
   getBookCount(): Observable<any> {
     return of([]);
