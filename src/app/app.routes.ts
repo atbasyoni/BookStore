@@ -9,10 +9,10 @@ import { AddBookComponent } from './admin/book-management/add-book/add-book.comp
 
 export const routes: Routes = [
   { path: '', component: HomeComponent },
-  { path: 'book', component: BookListComponent },
-  { path: 'book/:id', component: BookDetailComponent },
-  { path: 'login', component: LoginComponent },
-  { path: 'register', component: RegisterComponent },
-  /*{ path: 'bookmg', component: BookManagementComponent }*/
+  //{ path: 'book', component: BookListComponent },
+  //{ path: 'book/:id', component: BookDetailComponent },
+  //{ path: 'login', component: LoginComponent },
+  //{ path: 'register', component: RegisterComponent },
+  { path: 'bookmg', component: BookManagementComponent },
   { path: 'addbook', component: AddBookComponent }
 ];

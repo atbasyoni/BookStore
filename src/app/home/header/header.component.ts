@@ -20,7 +20,7 @@ export class HeaderComponent implements OnInit {
   constructor(private genreService: GerneService) {}
 
   ngOnInit() {
-      this.loadGenres();
+      //this.loadGenres();
   }
 
   loadGenres() {

@@ -7187,12 +7187,26 @@ blockquote span {
   background-color: #fff;
   color: #505050;
   font-size: 14px;
-  -webkit-appearance: none;
-  -moz-appearance: none;
-  appearance: none;
   height: 46px;
   border-radius: 4px !important;
   overflow: hidden;
+}
+
+.register-form .form-group .form-textarea {
+  padding: 0 18px;
+  -webkit-transition: color .25s, background-color .25s, border-color .25s;
+  transition: color .25s, background-color .25s, border-color .25s;
+  border: 1px solid #e0e0e0;
+  background-color: #fff;
+  color: #505050;
+  font-size: 14px;
+  border-radius: 4px !important;
+  overflow: hidden;
+}
+
+.register-form .form-textarea label {
+  display: block;
+  margin-bottom: 8px;
 }
 
 .register-form .button {
