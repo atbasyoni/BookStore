@@ -45,6 +45,7 @@ export class AddBookComponent {
         language: ['', [Validators.required]],
         price: ['', [Validators.required]],
         publicationDate: ['', [Validators.required]],
+        quantity: ['', [Validators.required]],
         image: ['', [Validators.required]],
         genreId: ['', [Validators.required]],
         authorId: ['', [Validators.required]],

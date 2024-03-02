@@ -5,6 +5,8 @@ import { ActivatedRoute, Router, RouterModule } from '@angular/router';
 import { CommonModule } from '@angular/common';
 import { Genre } from '../../models/genre.model';
 import { GerneService } from '../../services/gerne.service';
+import { CartService } from '../../services/cart.service';
+import { CartItem } from '../../models/cartItem.model';
 
 @Component({
   selector: 'app-book-list',
@@ -35,6 +37,7 @@ export class BookListComponent implements OnInit {
   constructor(
     private bookService: BookService,
     private genreService: GerneService,
+    private cartService: CartService,
     private route: ActivatedRoute,
     private router: Router
   ) {}
@@ -91,8 +94,20 @@ export class BookListComponent implements OnInit {
   }
 
   addToCart(book: any) {
-    // Implement your cart logic here
-    // e.g., call a service to add the book to the cart
-    console.log(`Adding book ${book.title} to cart`);
+    const cartItem: CartItem = { // Assuming `Book` interface matches cart item structure
+      ...book, // Copy book properties
+      quantity: 1 // Default quantity to 1
+    };
+
+    this.cartService.addToCart(cartItem)
+      .subscribe({
+        next: (response) => {
+          console.log('Item added to cart:', response); // Optional success message
+        },
+        error: (error) => {
+          console.error('Error adding item to cart:', error); // Handle errors gracefully
+          // Display an error message to the user
+        }
+      });
   }
 }

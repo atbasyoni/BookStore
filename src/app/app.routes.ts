@@ -6,13 +6,15 @@ import { LoginComponent } from './account/login/login.component';
 import { RegisterComponent } from './account/register/register.component';
 import { BookManagementComponent } from './admin/book-management/book-management.component';
 import { AddBookComponent } from './admin/book-management/add-book/add-book.component';
+import { CartComponent } from './cart/cart.component';
 
 export const routes: Routes = [
   { path: '', component: HomeComponent },
-  //{ path: 'book', component: BookListComponent },
+  { path: 'book', component: BookListComponent },
   //{ path: 'book/:id', component: BookDetailComponent },
-  //{ path: 'login', component: LoginComponent },
-  //{ path: 'register', component: RegisterComponent },
+  { path: 'login', component: LoginComponent },
+  { path: 'register', component: RegisterComponent },
+  { path: 'cart', component: CartComponent },
   { path: 'bookmg', component: BookManagementComponent },
   { path: 'addbook', component: AddBookComponent }
 ];

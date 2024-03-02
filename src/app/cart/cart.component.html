@@ -1,0 +1,112 @@
+ <!-- Shopping Cart -->
+ <div class="shopping-cart section">
+  <div class="container">
+      <div class="cart-list-head">
+          <!-- Cart List Title -->
+          <div class="cart-list-title">
+              <div class="row">
+                  <div class="col-lg-1 col-md-1 col-12">
+
+                  </div>
+                  <div class="col-lg-4 col-md-3 col-12">
+                    <p>اسم الكتاب</p>
+                  </div>
+                  <div class="col-lg-2 col-md-2 col-12">
+                    <p>العدد</p>
+                  </div>
+                  <div class="col-lg-2 col-md-2 col-12">
+                    <p>السعر</p>
+                  </div>
+                  <div class="col-lg-1 col-md-2 col-12">
+                    <p>الحذف</p>
+                  </div>
+              </div>
+          </div>
+          <!-- End Cart List Title -->
+          <!-- Cart Single List list -->
+          <div *ngFor="let item of cartItems" class="cart-single-list">
+              <div class="row align-items-center">
+                  <div class="col-lg-1 col-md-1 col-12">
+                      <a [routerLink]="['/book', item.id]"><img [src]="item.image" alt="{{ item.title }}"></a>
+                  </div>
+                  <div class="col-lg-4 col-md-3 col-12">
+                      <h5 class="product-name"><a [routerLink]="['/book', item.id]">
+                              {{ item.title }}</a></h5>
+                      <p class="product-des">
+                          <span><em>التصنيف:</em> {{ item.genre?.name }}</span>
+                          <span><em>المؤلف:</em> {{ item.author?.name }}</span>
+                      </p>
+                  </div>
+                  <div class="col-lg-2 col-md-2 col-12">
+                      <div class="count-input">
+                          <select class="form-control" [(ngModel)]="item.quantity" (change)="onUpdateQuantity(item, item.quantity)">
+                              <option value="1">1</option>
+                              <option value="2">2</option>
+                              <option value="3">3</option>
+                              <option value="4">4</option>
+                              <option value="5">5</option>
+                          </select>
+                      </div>
+                  </div>
+                  <div class="col-lg-2 col-md-2 col-12">
+                      <p>{{ item.price * item.quantity | currency:'EGP' }}</p>
+                  </div>
+                  <div class="col-lg-1 col-md-2 col-12">
+                      <a class="remove-item" (click)="onRemoveItem(item)"><i class="lni lni-close"></i></a>
+                  </div>
+              </div>
+          </div>
+          <!-- End Single List list -->
+      </div>
+      <div class="row">
+          <div class="col-12">
+              <!-- Total Amount -->
+              <div class="total-amount">
+                  <div class="row">
+                      <div class="col-lg-4 col-md-6 col-12">
+                          <div class="right">
+                              <ul>
+                                  <li>إجمالي السلة <span>{{ totalPrice | currency:'EGP'  }}</span></li>
+                                  <li>الشحن <span>مجاني</span></li>
+                              </ul>
+                              <div class="button">
+                                  <a href="checkout.html" class="btn">الدفع</a>
+                                  <a href="product-grids.html" class="btn btn-alt">الاستمرار في التسوق</a>
+                              </div>
+                          </div>
+                      </div>
+                  </div>
+              </div>
+              <!--/ End Total Amount -->
+          </div>
+      </div>
+  </div>
+</div>
+<!--/ End Shopping Cart -->
+
+
+<!--div class="cart-container">
+  <h2>Your Shopping Cart</h2>
+
+  <ul *ngIf="cartItems.length > 0" class="cart-items">
+    <li *ngFor="let item of cartItems">
+      <div class="item-details">
+        <img [src]="item.image" alt="{{ item.title }}">
+        <div class="info">
+          <h3>{{ item.title }}</h3>
+          <p>by {{ item.author }}</p>
+          <span class="qty">Quantity: {{ item.quantity }}</span>
+          <span class="price">{{ item.price | currency:'USD' }} each</span>
+        </div>
+      </div>
+      <button class="remove-btn" (click)="removeFromCart(item)">Remove</button>
+    </li>
+  </ul>
+
+  <div class="cart-summary" *ngIf="cartItems.length > 0">
+    <p><strong>Subtotal:</strong> {{ cartTotal | currency:'USD' }}</p>
+    <button class="checkout-btn" routerLink="/checkout">Proceed to Checkout</button>
+  </div>
+
+  <p *ngIf="cartItems.length === 0">Your cart is currently empty.</p>
+</div-->

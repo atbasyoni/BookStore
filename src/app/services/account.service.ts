@@ -56,6 +56,6 @@ export class AccountService {
   private handleError(error: any) {
     const message = 'Error processing request: ';
     console.error(message, error);
-    return throwError(message);
+    return throwError(() => new Error(message));
   }
 }

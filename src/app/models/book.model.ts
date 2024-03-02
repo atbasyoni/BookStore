@@ -12,6 +12,7 @@ export interface Book
   image?: string;
   price: number;
   publicationDate?: number;
+  quantity: number;
   genre?: Genre;
   author?: Author;
   //rating?: string;
